@@ -16,8 +16,6 @@ const ArtistSearch = () => {
         setSearchTerm(target.value);
       };
     
-
-
 return(
         <>
         <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
