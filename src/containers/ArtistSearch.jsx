@@ -4,25 +4,26 @@ import SearchControls from '../components/SearchControls';
 import { fetchArtists } from '../services/fetchUtils';
 
 const ArtistSearch = () => {
-    const [ artistList, setArtistList ] = useState([]);
-    const [ loading, setLoading ] = useState(false);
-    const [ searchTerm, setSearchTerm ] = useState('');
+  const [artistList, setArtistList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('doors');
 
-    useEffect( () => {
-        fetchArtists().then((setSearchTerm) => setArtistList(setSearchTerm))
-    }, [searchTerm]);
+  useEffect(() => {
+    fetchArtists(searchTerm).then((res) =>
+      setArtistList(res)
+    );
+  }, [searchTerm]);
 
-    const handleSearch = ({ target }) => {
-        setSearchTerm(target.value);
-      };
-    
+  const handleSearch = ({ target }) => {
+    setSearchTerm(target.value);
+  };
 
+  return (
+    <>
+      <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
 
-return(
-        <>
-        <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
-        <ArtistList artists={artistList} />
-        </>
-      )
-}
+      {artistList.length && <ArtistList artists={artistList} />}
+    </>
+  );
+};
 export default ArtistSearch;
