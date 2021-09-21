@@ -4,9 +4,9 @@ export const fetchArtists = async (search) => {
 
     console.log(artists);
 
-    return artists.map((artist) => {
-        id: artist.id
-        name: artist.name
+    // return artists.map((artist) => {
+    //     id: artist.id
+    //     name: artist.name
         
-    })
+    // })
 }

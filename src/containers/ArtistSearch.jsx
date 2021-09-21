@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import ArtistList from '../components/ArtistList.jsx';
+import ArtistList from '../components/ArtistList.jsx';
 import SearchControls from '../components/SearchControls';
 import { fetchArtists } from '../services/fetchUtils';
 
@@ -12,9 +12,16 @@ const ArtistSearch = () => {
         fetchArtists().then((setSearchTerm) => setArtistList(setSearchTerm))
     }, [searchTerm]);
 
+    const handleSearch = ({ target }) => {
+        setSearchTerm(target.value);
+      };
+    
+
+
 return(
         <>
-        <SearchControls />
+        <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
+        <ArtistList artists={artistList} />
         </>
       )
 }
