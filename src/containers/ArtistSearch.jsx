@@ -15,6 +15,20 @@ const ArtistSearch = () => {
     );
   }, [searchTerm]);
 
+<<<<<<< HEAD
+    const handleSearch = ({ target }) => {
+        setSearchTerm(target.value);
+      };
+    
+return(
+        <>
+        <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
+        <ArtistList artists={artistList} />
+        </>
+      )
+}
+export default ArtistSearch;
+=======
   const handleSearch = ({ target }) => {
     setSearchTerm(target.value);
   };
@@ -34,3 +48,4 @@ const ArtistSearch = () => {
   );
 };
 export default ArtistSearch;
+>>>>>>> 74ed38d409c78df411d3c8c03a46608d077cc677
