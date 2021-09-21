@@ -26,3 +26,15 @@ export const fetchReleases = async (artistId) => {
       : 'https://img.cinemablend.com/filter:scale/quill/2/5/7/3/b/2/2573b2c3b5ebe45b398fcb9c10538e6c10a5c60b.jpg?mw=600',
   }));
 };
+
+export const fetchRecordings = async (RELEASE_ID) => {
+    const res = await fetch(`http://musicbrainz.org/ws/2/recording?release=${RELEASE_ID}&fmt=json`);
+    
+    const { recordings } = await res.json();
+
+    return recordings.map((recording) => ({
+        id: recording.id,
+        title: recording.title,
+        
+    }));
+}
