@@ -4,12 +4,12 @@ import { fetchReleases } from '../services/fetchUtils';
 import { useParams } from 'react-router-dom';
 
 const ReleasesContainer = () => {
-  const { id } = useParams();
+  const { id, artist } = useParams();
   const [albumList, setAlbumList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchReleases(id)
+    fetchReleases(id, artist)
       .then((res) => setAlbumList(res))
       .finally(() => setLoading(false));
   }, []);
