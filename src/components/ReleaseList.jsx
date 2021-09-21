@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Release from './Release';
+import { Link } from 'react-router-dom';
 
 const ReleaseList = ({ releases }) => (
   <ul aria-label="albums">
     {releases.map(({ id, title, coverArt }) => (
-      <li key={id}>
-        <Release id={id} title={title} coverArt={coverArt} />
-      </li>
+      <Link key={id} to={`/recordings/${id}`}>
+        <li key={id}>
+          <Release id={id} title={title} coverArt={coverArt} />
+        </li>
+      </Link>
     ))}
   </ul>
 );
