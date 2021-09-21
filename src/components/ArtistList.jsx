@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Artist from './Artist';
+import { Link } from 'react-router-dom';
 
-const ArtistList = ({ artists }) => {
-  console.log(artists, 'artists')
-  return (
+const ArtistList = ({ artists }) => (
     <ul aria-label="artists">
       {artists.map(({ id, name }) => (
-        <li key={id}>
+        <Link to={`/releases/${id}`}
+          <li key={id}>
           <Artist id={id} name={name} />
-        </li>
+          </li>
+        </Link>
       ))}
     </ul>
+    
   );
-};
+
 
 ArtistList.propTypes = {
   artists: PropTypes.arrayOf(

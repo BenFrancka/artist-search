@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ArtistList from '../components/ArtistList.jsx';
 import SearchControls from '../components/SearchControls';
 import { fetchArtists } from '../services/fetchUtils';
+import Pagination from 'react-js-pagination';
 
 const ArtistSearch = () => {
   const [artistList, setArtistList] = useState([]);
@@ -21,6 +22,12 @@ const ArtistSearch = () => {
   return (
     <>
       <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
+
+      <Pagination
+        activePage={activePage}
+        itemsCountPerPage={25}
+        onChange={handlePageChange}
+      />
 
       {artistList.length && <ArtistList artists={artistList} />}
     </>
