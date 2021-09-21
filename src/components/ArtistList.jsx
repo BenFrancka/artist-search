@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const ArtistList = ({ artists }) => (
   <ul aria-label="artists">
     {artists.map(({ id, name }) => (
-      <Link key={id} to={`/releases/${id}`}>
+      <Link key={id} to={`/releases/${name}/${id}`}>
         <li key={id}>
           <Artist id={id} name={name} />
         </li>
