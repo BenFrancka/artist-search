@@ -9,14 +9,19 @@ const ReleasesContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchReleases(id, artist)
+    fetchReleases(id)
       .then((res) => setAlbumList(res))
       .finally(() => setLoading(false));
   }, []);
 
-
   return (
-    <>{loading ? <h1>...Loading</h1> : <ReleaseList releases={albumList} />}</>
+    <>
+      {loading ? (
+        <h1>...Loading</h1>
+      ) : (
+        <ReleaseList releases={albumList} artist={artist} />
+      )}
+    </>
   );
 };
 
