@@ -9,25 +9,26 @@ const ArtistSearch = () => {
   const [artistList, setArtistList] = useState([]);
   //const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('doors');
-  const [page, setPage] = useState(1);
-  const [count, setCount] = useState(0);
+  const [offSet, setOffset] = useState(0);
+  
 
   useEffect(() => {
-    fetchArtists(searchTerm).then((res) => setArtistList(res));
-  }, [searchTerm]);
+    if(!searchTerm)return
+    fetchArtists(searchTerm, offSet).then((res) => setArtistList(res));
+  }, [offSet, searchTerm]);
 
   const handleSearch = ({ target }) => {
     setSearchTerm(target.value);
   };
 
-  const handleClick = (number) => {
-    setPage((prevPage) => prevPage + number);
+  const updateOffset = (number) => {
+    setOffset((prevPage) => prevPage + number);
   };
 
   return (
     <>
       <SearchControls searchTerm={searchTerm} onSearchChange={handleSearch} />
-      <PaginationControl page={page} count={count} onPageClick={handleClick}/>
+      <PaginationControl offSet={offSet} artists={artistList} updateOffset={updateOffset}/>
       {artistList.length && <ArtistList artists={artistList} />}
     </>
   );
