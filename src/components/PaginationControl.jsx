@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PaginationControls = ({ onPageClick, page, count }) => {
+const PaginationControls = ({ artists, offset, updateOffset }) => {
+  console.log('LOOL HERE', artists);
   return (
     <>
-      <button onClick={() => onPageClick(-1)} disabled={page <= 1}>
+      <button onClick={() => updateOffset(-25)} disabled={offset === 0}>
         Prev.
       </button>
-      <button onClick={() => onPageClick(1)} disabled={page > count / 25}>
+      <button onClick={() => updateOffset(25)} disabled={artists.length < 25}>
         Next.
       </button>
     </>
@@ -15,9 +16,14 @@ const PaginationControls = ({ onPageClick, page, count }) => {
 };
 
 PaginationControls.propTypes = {
-  onPageClick: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  count: PropTypes.number.isRequired,
+  offSet: PropTypes.number.isRequired,
+  updateOffset: PropTypes.func.isRequired,
+  artists: PropTypes.arrayOf(
+      PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+      }).isRequired
+  ),
 };
 
 export default PaginationControls;
