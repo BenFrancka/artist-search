@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PaginationControls = ({ artists, offset, updateOffset }) => {
-  console.log('LOOL HERE', artists);
   return (
     <>
       <button onClick={() => updateOffset(-25)} disabled={offset === 0}>

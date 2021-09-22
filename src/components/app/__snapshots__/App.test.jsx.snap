@@ -14,14 +14,10 @@ exports[`AristSearch Container should display a list of artists matching a searc
       value="beatles"
     />
   </label>
-  <button
-    disabled=""
-  >
+  <button>
     Prev.
   </button>
-  <button
-    disabled=""
-  >
+  <button>
     Next.
   </button>
   <ul
