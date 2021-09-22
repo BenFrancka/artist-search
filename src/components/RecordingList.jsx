@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Recording from './Recording';
 import { Link } from 'react-router-dom';
 
-const RecordingList = ({ recordings }) => (
+const RecordingList = ({ recordings, artist }) => (
   <ul aria-label="recordings">
     {recordings.map(({ id, title }) => (
-      <Link key={id} to={'/songs/:artist/:title'}>
+      <Link key={id} to={`/songs/${artist}/${title}`}>
         <li key={id}>
           <Recording id={id} title={title} />
         </li>
@@ -22,6 +22,7 @@ RecordingList.propTypes = {
       title: PropTypes.string.isRequired,
     }).isRequired
   ),
+  artist: PropTypes.string.isRequired,
 };
 
 export default RecordingList;

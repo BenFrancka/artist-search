@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Release from './Release';
 import { Link } from 'react-router-dom';
 
-const ReleaseList = ({ releases }) => (
+const ReleaseList = ({ releases, artist }) => (
   <ul aria-label="albums">
     {releases.map(({ id, title, coverArt }) => (
-      <Link key={id} to={`/recordings/${id}`}>
+      <Link key={id} to={`/recordings/${artist}/${id}`}>
         <li key={id}>
           <Release id={id} title={title} coverArt={coverArt} />
         </li>
@@ -23,6 +23,7 @@ ReleaseList.propTypes = {
       coverArt: PropTypes.string.isRequired,
     }).isRequired
   ),
+  artist: PropTypes.string.isRequired,
 };
 
 export default ReleaseList;
