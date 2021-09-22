@@ -3,7 +3,6 @@ export const fetchArtists = async (search) => {
     `http://musicbrainz.org/ws/2/artist?query=${search}&fmt=json&limit=25`
   );
   const { artists } = await res.json();
-  console.log(artists, 'artist')
 
   return artists.map((artist) => ({
     id: artist.id,
@@ -25,7 +24,7 @@ export const fetchReleases = async (artistId) => {
     coverArt: release['cover-art-archive'].front
       ? `http://coverartarchive.org/release/${release.id}/front`
       : // eslint-disable-next-line max-len
-        'https://img.cinemablend.com/filter:scale/quill/2/5/7/3/b/2/2573b2c3b5ebe45b398fcb9c10538e6c10a5c60b.jpg?mw=600',
+      'https://img.cinemablend.com/filter:scale/quill/2/5/7/3/b/2/2573b2c3b5ebe45b398fcb9c10538e6c10a5c60b.jpg?mw=600',
   }));
 };
 
